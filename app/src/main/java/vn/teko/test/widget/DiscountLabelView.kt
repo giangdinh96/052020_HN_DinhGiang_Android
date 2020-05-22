@@ -1,4 +1,4 @@
-package vn.teko.test
+package vn.teko.test.widget
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import androidx.core.content.res.ResourcesCompat
+import vn.teko.test.R
 import vn.teko.test.utils.DimensionUtils
 
 class DiscountLabelView : androidx.appcompat.widget.AppCompatTextView {
@@ -31,11 +32,17 @@ class DiscountLabelView : androidx.appcompat.widget.AppCompatTextView {
 
     private fun init(attrs: AttributeSet?) {
         val input =
-            context.obtainStyledAttributes(attrs, R.styleable.DiscountLabelView, 0, 0)
+            context.obtainStyledAttributes(
+                attrs,
+                R.styleable.DiscountLabelView, 0, 0
+            )
 
         val labelBackgroundColor = input.getColor(
             R.styleable.DiscountLabelView_labelBackgroundColor,
-            ResourcesCompat.getColor(resources, R.color.colorTomato, null)
+            ResourcesCompat.getColor(
+                resources,
+                R.color.colorTomato, null
+            )
         )
         paint.color = labelBackgroundColor
         paint.style = Paint.Style.FILL
