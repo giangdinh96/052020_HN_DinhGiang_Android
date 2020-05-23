@@ -1,6 +1,5 @@
 package vn.teko.test.presentation.ui.productlist
 
-import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import vn.teko.test.COLOR_REFRESH_PROGRESS
@@ -8,12 +7,10 @@ import vn.teko.test.R
 import vn.teko.test.base.BaseFragment
 import vn.teko.test.databinding.FragmentProductListBinding
 import vn.teko.test.di.AppViewModelFactory
-import vn.teko.test.extension.hideKeyboard
 import vn.teko.test.extension.setup
 import vn.teko.test.extension.updateLoadMore
 import vn.teko.test.extension.updateRefresh
 import vn.teko.test.presentation.adapter.ProductItemAdapter
-import vn.teko.test.utils.TextWatcherCustom
 import javax.inject.Inject
 
 class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
@@ -37,22 +34,24 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
     private fun initProductList() {
         binding.productListRefreshRcv.setup()
         binding.productListRefreshRcv.adapter = productItemAdapter
+        initBackClick()
+        initSearchView()
         initRefresh()
         initLoadMore()
-        initSearchView()
+    }
+
+    private fun initBackClick() {
+        binding.backIv.setOnClickListener {
+            activity?.finish()
+        }
     }
 
     private fun initSearchView() {
-        binding.searchEt.addTextChangedListener(TextWatcherCustom {
+        binding.searchProductSv.textChangeListener = {
             callRefreshList()
-        })
-        binding.searchEt.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                callRefreshList()
-                hideKeyboard()
-                return@setOnEditorActionListener true
-            }
-            return@setOnEditorActionListener false
+        }
+        binding.searchProductSv.onSearchPressListener = {
+            callRefreshList()
         }
     }
 
@@ -65,12 +64,12 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
 
     private fun initLoadMore() {
         productItemAdapter.loadMoreModule.setOnLoadMoreListener {
-            productListViewModel.loadMore(binding.searchEt.text.toString())
+            productListViewModel.loadMore(binding.searchProductSv.getText().trim())
         }
     }
 
     private fun callRefreshList() {
-        productListViewModel.refresh(binding.searchEt.text.toString().trim())
+        productListViewModel.refresh(binding.searchProductSv.getText().trim())
     }
 
     override fun observeData() {

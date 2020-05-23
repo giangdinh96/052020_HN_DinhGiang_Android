@@ -2,23 +2,21 @@ package vn.teko.test.utils
 
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
-import java.util.*
 import kotlin.math.roundToLong
 
 object DecimalFormatUtils {
     private val NUMBER_DECIMAL_FORMAT =
-        DecimalFormat(",##0.00", DecimalFormatSymbols(Locale.ENGLISH))
-    private val NUMBER_DECIMAL_FORMAT_SIMPLE =
-        DecimalFormat("0.##", DecimalFormatSymbols(Locale.ENGLISH))
+        DecimalFormat(",##0")
+
+    init {
+        val decimalFormatSymbols = DecimalFormatSymbols()
+        decimalFormatSymbols.groupingSeparator = '.'
+        NUMBER_DECIMAL_FORMAT.decimalFormatSymbols = decimalFormatSymbols
+    }
 
     @JvmStatic
     fun formatPrice(number: Double): String {
         return formatNumber(if (number < 0) 0.0 else number)
-    }
-
-    @JvmStatic
-    fun formatPriceSimple(number: Double): String {
-        return formatNumberSimple(if (number < 0) 0.0 else number)
     }
 
     @JvmStatic
@@ -42,11 +40,6 @@ object DecimalFormatUtils {
             0.0
         }
         return result
-    }
-
-    @JvmStatic
-    fun formatNumberSimple(number: Double): String {
-        return formatNumber(NUMBER_DECIMAL_FORMAT_SIMPLE, roundNumber(number))
     }
 
     @JvmStatic
