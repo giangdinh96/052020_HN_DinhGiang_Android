@@ -3,4 +3,9 @@
     <declare-styleable name="DiscountLabelView">
         <attr name="labelBackgroundColor" format="color|reference" />
     </declare-styleable>
+
+    <declare-styleable name="SearchView">
+        <attr name="text" format="reference|string" />
+        <attr name="hint" format="reference|string" />
+    </declare-styleable>
 </resources>
