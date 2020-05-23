@@ -75,7 +75,6 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
     override fun observeData() {
         productListViewModel.productListResult.observe(this, Observer {
             productItemAdapter.setDiffNewData(it)
-
         })
 
         productListViewModel.loadMoreStatus.observe(this, Observer {
