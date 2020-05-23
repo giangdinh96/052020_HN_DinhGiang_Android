@@ -59,8 +59,17 @@ object NetworkConfigModule {
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
-            .cache(cache)
+//            .cache(cache)
             .addInterceptor(httpLoggingInterceptor)
+//            .addNetworkInterceptor(object : Interceptor {
+//                override fun intercept(chain: Interceptor.Chain): Response {
+//                    val originalResponse = chain.proceed(chain.request())
+//                    val maxAge = 60
+//                    return originalResponse.newBuilder()
+//                        .header("Cache-Control", "public, max-age=$maxAge")
+//                        .build()
+//                }
+//            })
             .build()
     }
 

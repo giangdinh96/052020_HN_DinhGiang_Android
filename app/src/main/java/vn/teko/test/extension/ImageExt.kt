@@ -17,13 +17,12 @@ fun ImageView.loadImage(
     url: String? = null,
     resId: Int = DEFAULT_PLACE_HOLDER,
     uri: Uri? = null,
-    thumbnail: String? = null,
     placeHolderId: Int = DEFAULT_PLACE_HOLDER,
     errorId: Int = DEFAULT_PLACE_HOLDER
 ) {
     builder(
         url, resId, uri,
-        thumbnail, placeHolderId, errorId
+        placeHolderId, errorId
     ).into(this)
 }
 
@@ -59,24 +58,19 @@ fun ImageView.builder(
     url: String? = null,
     resId: Int = DEFAULT_PLACE_HOLDER,
     uri: Uri? = null,
-    thumbnail: String? = null,
     placeHolderId: Int = DEFAULT_PLACE_HOLDER,
     errorId: Int = DEFAULT_PLACE_HOLDER
 ): RequestBuilder<Drawable> {
-    val requestManager = Glide.with(this)
+    val requestManager = Glide.with(this.context)
     val requestBuilder: RequestBuilder<Drawable> = when {
         url != null -> requestManager.load(url)
         uri != null -> requestManager.load(uri)
         else -> requestManager.load(resId)
     }
     requestBuilder.apply {
-        thumbnail(0.5f)
         placeholder(placeHolderId)
         error(errorId)
         transition(DrawableTransitionOptions.withCrossFade())
-        if (thumbnail != null) {
-            thumbnail(Glide.with(this@builder).load(load(thumbnail)))
-        }
     }
     return requestBuilder
 }

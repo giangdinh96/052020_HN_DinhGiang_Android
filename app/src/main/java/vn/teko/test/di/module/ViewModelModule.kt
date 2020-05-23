@@ -5,7 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import vn.teko.test.di.ViewModelKey
-import vn.teko.test.ui.productlist.ProductListViewModel
+import vn.teko.test.presentation.ui.productlist.ProductListViewModel
 
 @Module
 abstract class ViewModelModule {

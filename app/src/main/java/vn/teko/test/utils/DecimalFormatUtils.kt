@@ -13,12 +13,12 @@ object DecimalFormatUtils {
 
     @JvmStatic
     fun formatPrice(number: Double): String {
-        return "$" + formatNumber(if (number < 0) 0.0 else number)
+        return formatNumber(if (number < 0) 0.0 else number)
     }
 
     @JvmStatic
     fun formatPriceSimple(number: Double): String {
-        return "$" + formatNumberSimple(if (number < 0) 0.0 else number)
+        return formatNumberSimple(if (number < 0) 0.0 else number)
     }
 
     @JvmStatic

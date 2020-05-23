@@ -3,6 +3,9 @@ package vn.teko.test
 const val BASE_ACTIVITY_LAYOUT_ID = R.layout.activity_base
 const val FRAGMENT_CONTAINER_ID = R.id.container_id
 
+const val CODE_SUCCESS = "SUCCESS"
+const val CODE_ERROR = "ERROR"
+
 @JvmField
 val COLOR_REFRESH_PROGRESS = intArrayOf(
     android.R.color.holo_red_light,

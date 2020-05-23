@@ -1,8 +1,8 @@
-package vn.teko.test.ui
+package vn.teko.test.presentation.ui
 
 import vn.teko.test.base.BaseActivity
 import vn.teko.test.base.BaseFragment
-import vn.teko.test.ui.productlist.ProductListFragment
+import vn.teko.test.presentation.ui.productlist.ProductListFragment
 
 class MainActivity : BaseActivity() {
 
