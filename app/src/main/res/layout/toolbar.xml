@@ -41,7 +41,7 @@
         android:contentDescription="@null"
         android:focusable="true"
         android:scaleType="centerInside"
-        android:src="@drawable/ic_shopping_cart"
+        android:src="@drawable/ic_cart"
         android:stateListAnimator="@animator/anim_press_common"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/toolbar_header_content_container_v"

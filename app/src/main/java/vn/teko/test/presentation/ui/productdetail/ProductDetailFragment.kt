@@ -34,8 +34,18 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding>() {
             ViewModelProvider(this, appViewModelFactory)[ProductDetailViewModel::class.java]
         productDetailViewModel.productId = arguments?.getString(PRODUCT_ID) ?: ""
 
+        initToolbarListener()
         initBanner()
         initProductList()
+    }
+
+    private fun initToolbarListener() {
+        binding.toolbarTb.setOnActionLeftClickListener {
+            fragmentManager?.popBackStack()
+        }
+        binding.toolbarTb.setOnActionRightClickListener {
+            showToast("Cart click")
+        }
     }
 
     private fun initBanner() {
