@@ -270,7 +270,7 @@ public class Toolbar extends ConstraintLayout {
     }
 
     //------------------------------------------------- Title --------------------------------------------------------------//
-    public void setTitle(String title) {
+    public void setTitle(CharSequence title) {
         mTitleTv.setText(title);
     }
 
@@ -295,7 +295,7 @@ public class Toolbar extends ConstraintLayout {
     }
 
     //------------------------------------------------- Subtitle --------------------------------------------------------------//
-    public void setSubtitle(String title) {
+    public void setSubtitle(CharSequence title) {
         mSubtitleTv.setText(title);
     }
 
