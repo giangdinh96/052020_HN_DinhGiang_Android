@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import dagger.android.support.DaggerFragment
+import vn.teko.test.extension.setOnTouchHideKeyboard
 
 abstract class BaseFragment<V : ViewDataBinding> : DaggerFragment() {
     lateinit var binding: V
@@ -22,6 +23,7 @@ abstract class BaseFragment<V : ViewDataBinding> : DaggerFragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         init()
         val rootView = binding.root
+        rootView.setOnTouchHideKeyboard(null)
         rootView.isClickable = true
         return rootView
     }
