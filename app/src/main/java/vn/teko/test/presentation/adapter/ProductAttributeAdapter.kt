@@ -9,11 +9,13 @@ import vn.teko.test.databinding.ItemProductAttributeDataBinding
 import vn.teko.test.presentation.model.ProductAttributeData
 import kotlin.math.min
 
-class ProductAttributeDataDataBindingAdapter :
+class ProductAttributeAdapter(var dataList: MutableList<ProductAttributeData> = ArrayList()) :
     BaseDataBindingAdapter<ItemProductAttributeDataBinding, BaseDataBindingViewHolder<ItemProductAttributeDataBinding>>() {
-
-    private var dataList: MutableList<ProductAttributeData> = ArrayList()
-    private var expandMode: Boolean = true
+    var expandMode: Boolean = true
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
