@@ -157,5 +157,6 @@ class ProductInfoDetailView : LinearLayout {
         descriptionTv.text = description
         productAttributeAdapter.dataList.clear()
         productAttributeAdapter.dataList.addAll(productData)
+        productAttributeAdapter.notifyDataSetChanged()
     }
 }
