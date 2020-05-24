@@ -33,7 +33,7 @@ class ProductItemAdapter(layout: Int = R.layout.item_product) :
             priceTv.text = item.finalPrice.toLastLetterSuperscriptSpanString()
         }
 
-        if (item.finalPrice.isEmpty()) {
+        if (item.originPrice.isEmpty()) {
             originPriceTv.visibility = View.GONE
         } else {
             originPriceTv.visibility = View.VISIBLE
