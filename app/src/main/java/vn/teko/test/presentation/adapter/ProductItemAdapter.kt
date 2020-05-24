@@ -13,11 +13,10 @@ import vn.teko.test.extension.toLastLetterSuperscriptSpanString
 import vn.teko.test.extension.toStrikethroughSpanString
 import vn.teko.test.presentation.model.ProductItem
 
-class ProductItemAdapter() :
-    BaseQuickAdapter<ProductItem, BaseViewHolder>(R.layout.item_product), LoadMoreModule {
+class ProductItemAdapter(layout: Int = R.layout.item_product) :
+    BaseQuickAdapter<ProductItem, BaseViewHolder>(layout), LoadMoreModule {
 
     init {
-        setAnimationWithDefault(AnimationType.SlideInLeft)
         setDiffCallback(ProductItemDiffCallback())
     }
 

@@ -2,6 +2,7 @@ package vn.teko.test.presentation.ui.productlist
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.chad.library.adapter.base.BaseQuickAdapter
 import vn.teko.test.COLOR_REFRESH_PROGRESS
 import vn.teko.test.R
 import vn.teko.test.base.BaseFragment
@@ -48,6 +49,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
     }
 
     private fun initProductList() {
+        productItemAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInLeft)
         binding.productListRefreshRcv.setup()
         binding.productListRefreshRcv.adapter = productItemAdapter
         initRefresh()
