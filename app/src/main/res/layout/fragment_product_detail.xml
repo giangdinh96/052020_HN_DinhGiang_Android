@@ -5,13 +5,36 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
-        <include
-            android:id="@+id/container_more_product"
-            layout="@layout/container_more_product" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPaleGrey"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/container_banner"
+                    layout="@layout/container_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp" />
+
+                <include
+                    android:id="@+id/container_more_product"
+                    layout="@layout/container_more_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </layout>

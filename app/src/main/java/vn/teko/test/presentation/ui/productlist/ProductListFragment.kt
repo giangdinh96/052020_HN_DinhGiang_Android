@@ -73,7 +73,7 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
     private fun initOnClickItem() {
         productItemAdapter.setOnItemClickListener { adapter, view, position ->
             view.delayViewPress()
-            replaceFragment(ProductDetailFragment.newInstance(productItemAdapter.getItem(position).id))
+            addFragment(ProductDetailFragment.newInstance(productItemAdapter.getItem(position).id))
         }
     }
 
@@ -82,19 +82,19 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
     }
 
     override fun observeData() {
-        productListViewModel.productListResult.observe(this, Observer {
+        productListViewModel.productListResult.observe(viewLifecycleOwner, Observer {
             productItemAdapter.setDiffNewData(it)
         })
 
-        productListViewModel.loadMoreStatus.observe(this, Observer {
+        productListViewModel.loadMoreStatus.observe(viewLifecycleOwner, Observer {
             productItemAdapter.updateLoadMore(it)
         })
 
-        productListViewModel.refreshStatus.observe(this, Observer {
+        productListViewModel.refreshStatus.observe(viewLifecycleOwner, Observer {
             binding.productListRefreshSrl.updateRefresh(it)
         })
 
-        productListViewModel.showToast.observe(this, Observer {
+        productListViewModel.showToast.observe(viewLifecycleOwner, Observer {
             showToast(it)
         })
     }

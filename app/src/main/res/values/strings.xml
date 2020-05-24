@@ -2,4 +2,5 @@
     <string name="app_name">Teko Test</string>
     <string name="search_product_hint">Nhập tên, mã sản phẩm</string>
     <string name="product_same_type">Sản phẩm cùng loại</string>
+    <string name="no_data">No data</string>
 </resources>
