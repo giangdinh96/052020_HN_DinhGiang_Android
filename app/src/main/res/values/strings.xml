@@ -3,4 +3,6 @@
     <string name="search_product_hint">Nhập tên, mã sản phẩm</string>
     <string name="product_same_type">Sản phẩm cùng loại</string>
     <string name="no_data">No data</string>
+    <string name="product_id">Mã SP:</string>
+    <string name="tam_het_hang">Tạm hết hàng</string>
 </resources>

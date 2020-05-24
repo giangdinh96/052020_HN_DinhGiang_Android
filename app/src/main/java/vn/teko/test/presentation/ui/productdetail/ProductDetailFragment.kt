@@ -49,33 +49,33 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding>() {
     }
 
     private fun initBanner() {
-        val pager = binding.containerBanner.bannerVp
+        val pager = binding.banner.bannerVp
         pager.adapter = bannerAdapter
         autoViewPager.apply {
             viewPager2 = pager
             start()
         }
-        binding.containerBanner.bannerIndicator.setViewPager2(pager)
+        binding.banner.bannerIndicator.setViewPager2(pager)
     }
 
     private fun initProductList() {
         productItemAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn)
-        binding.containerMoreProduct.productListRcv.setup(orientation = LinearLayoutManager.HORIZONTAL)
-        binding.containerMoreProduct.productListRcv.adapter = productItemAdapter
+        binding.moreProduct.productListRcv.setup(orientation = LinearLayoutManager.HORIZONTAL)
+        binding.moreProduct.productListRcv.adapter = productItemAdapter
     }
 
     override fun observeData() {
         productDetailViewModel.bannerList.observe(viewLifecycleOwner, Observer {
             bannerAdapter.setNewInstance(ArrayList(it))
             if (it.isEmpty()) {
-                binding.containerBanner.rootCl.visibility = View.GONE
+                binding.banner.root.visibility = View.GONE
             }
         })
 
         productDetailViewModel.productMoreList.observe(viewLifecycleOwner, Observer {
             productItemAdapter.setNewInstance(ArrayList(it))
             if (it.isEmpty()) {
-                binding.containerMoreProduct.rootCl.visibility = View.GONE
+                binding.moreProduct.root.visibility = View.GONE
             }
         })
     }

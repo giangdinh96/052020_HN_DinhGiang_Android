@@ -38,15 +38,22 @@
                 android:orientation="vertical">
 
                 <include
-                    android:id="@+id/container_banner"
-                    layout="@layout/container_banner"
+                    android:id="@+id/banner"
+                    layout="@layout/container_product_banner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp" />
 
                 <include
-                    android:id="@+id/container_more_product"
-                    layout="@layout/container_more_product"
+                    android:id="@+id/header_info"
+                    layout="@layout/container_product_header_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp" />
+
+                <include
+                    android:id="@+id/more_product"
+                    layout="@layout/container_product_more"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp" />
