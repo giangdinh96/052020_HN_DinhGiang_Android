@@ -7,10 +7,9 @@ import vn.teko.test.R
 import vn.teko.test.base.BaseFragment
 import vn.teko.test.databinding.FragmentProductListBinding
 import vn.teko.test.di.AppViewModelFactory
-import vn.teko.test.extension.setup
-import vn.teko.test.extension.updateLoadMore
-import vn.teko.test.extension.updateRefresh
+import vn.teko.test.extension.*
 import vn.teko.test.presentation.adapter.ProductItemAdapter
+import vn.teko.test.presentation.ui.productdetail.ProductDetailFragment
 import javax.inject.Inject
 
 class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
@@ -28,16 +27,9 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
         productListViewModel =
             ViewModelProvider(this, appViewModelFactory)[ProductListViewModel::class.java]
 
-        initProductList()
-    }
-
-    private fun initProductList() {
-        binding.productListRefreshRcv.setup()
-        binding.productListRefreshRcv.adapter = productItemAdapter
         initBackClick()
+        initProductList()
         initSearchView()
-        initRefresh()
-        initLoadMore()
     }
 
     private fun initBackClick() {
@@ -55,6 +47,14 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
         }
     }
 
+    private fun initProductList() {
+        binding.productListRefreshRcv.setup()
+        binding.productListRefreshRcv.adapter = productItemAdapter
+        initRefresh()
+        initLoadMore()
+        initOnClickItem()
+    }
+
     private fun initRefresh() {
         binding.productListRefreshSrl.setColorSchemeResources(*COLOR_REFRESH_PROGRESS)
         binding.productListRefreshSrl.setOnRefreshListener {
@@ -65,6 +65,13 @@ class ProductListFragment : BaseFragment<FragmentProductListBinding>() {
     private fun initLoadMore() {
         productItemAdapter.loadMoreModule.setOnLoadMoreListener {
             productListViewModel.loadMore(binding.searchProductSv.getText().trim())
+        }
+    }
+
+    private fun initOnClickItem() {
+        productItemAdapter.setOnItemClickListener { adapter, view, position ->
+            view.delayViewPress()
+            replaceFragment(ProductDetailFragment.newInstance(productItemAdapter.getItem(position).id))
         }
     }
 
