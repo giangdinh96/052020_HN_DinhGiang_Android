@@ -12,6 +12,7 @@ import vn.teko.test.base.BaseFragment
 import vn.teko.test.databinding.FragmentProductDetailBinding
 import vn.teko.test.di.AppViewModelFactory
 import vn.teko.test.extension.setup
+import vn.teko.test.presentation.adapter.BannerAdapter
 import vn.teko.test.presentation.adapter.ProductItemAdapter
 import vn.teko.test.widget.AutoViewPager
 import javax.inject.Inject

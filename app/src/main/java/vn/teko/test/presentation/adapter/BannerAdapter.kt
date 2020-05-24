@@ -1,4 +1,4 @@
-package vn.teko.test.presentation.ui.productdetail
+package vn.teko.test.presentation.adapter
 
 import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
