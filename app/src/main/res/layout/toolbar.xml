@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    tools:parentTag="androidx.constraintlayout.motion.widget.MotionLayout"
+    tools:targetApi="lollipop">
+
+    <View
+        android:id="@+id/toolbar_header_content_container_v"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/toolbar_header_action_left_iv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:contentDescription="@null"
+        android:focusable="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_back"
+        android:stateListAnimator="@animator/anim_press_common"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar_header_content_container_v"
+        app:layout_constraintDimensionRatio="1.2:1"
+        app:layout_constraintLeft_toLeftOf="@id/toolbar_header_content_container_v"
+        app:layout_constraintTop_toTopOf="@id/toolbar_header_content_container_v" />
+
+    <ImageView
+        android:id="@+id/toolbar_header_action_right_iv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:contentDescription="@null"
+        android:focusable="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_shopping_cart"
+        android:stateListAnimator="@animator/anim_press_common"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar_header_content_container_v"
+        app:layout_constraintDimensionRatio="1.2:1"
+        app:layout_constraintRight_toRightOf="@id/toolbar_header_content_container_v"
+        app:layout_constraintTop_toTopOf="@id/toolbar_header_content_container_v" />
+
+    <TextView
+        android:id="@+id/toolbar_header_title_tv"
+        style="@style/TextTitleToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_header_subtitle_tv"
+        app:layout_constraintLeft_toRightOf="@id/toolbar_header_action_left_iv"
+        app:layout_constraintRight_toLeftOf="@id/toolbar_header_action_right_iv"
+        app:layout_constraintTop_toTopOf="@id/toolbar_header_content_container_v"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/toolbar_header_subtitle_tv"
+        style="@style/TextTitleToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:visibility="visible"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar_header_content_container_v"
+        app:layout_constraintLeft_toRightOf="@id/toolbar_header_action_left_iv"
+        app:layout_constraintRight_toLeftOf="@id/toolbar_header_action_right_iv"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_title_tv"
+        tools:text="Subtitle" />
+
+    <View
+        android:id="@+id/toolbar_header_bottom_divider_v"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@drawable/bg_shadow_bottom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_content_container_v" />
+
+    <View
+        android:id="@+id/toolbar_body_v"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_bottom_divider_v" />
+</merge>

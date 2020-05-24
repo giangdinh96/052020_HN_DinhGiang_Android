@@ -8,4 +8,55 @@
         <attr name="text" format="reference|string" />
         <attr name="hint" format="reference|string" />
     </declare-styleable>
+
+    <declare-styleable name="Toolbar">
+        <!--Header content container-->
+        <attr name="tbl_header_content_container_drawable" format="reference|color" />
+        <attr name="tbl_header_content_container_height" format="reference|dimension" />
+
+        <!--Display style-->
+        <attr name="tbl_header_action_left_style" format="enum">
+            <enum name="none" value="0" />
+            <enum name="image" value="1" />
+        </attr>
+        <attr name="tbl_header_action_right_style" format="enum">
+            <enum name="none" value="0" />
+            <enum name="image" value="1" />
+        </attr>
+
+        <!--Title-->
+        <attr name="tbl_header_title" format="reference|string" />
+        <attr name="tbl_header_title_color" format="reference|color" />
+        <attr name="tbl_header_title_size" format="reference|dimension" />
+        <attr name="tbl_header_title_style" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="semi-bold" value="2" />
+        </attr>
+        <attr name="tbl_header_title_all_caps" format="boolean" />
+
+        <!--Subtitle-->
+        <attr name="tbl_header_subtitle" format="reference|string" />
+        <attr name="tbl_header_subtitle_color" format="reference|color" />
+        <attr name="tbl_header_subtitle_size" format="reference|dimension" />
+        <attr name="tbl_header_subtitle_style" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="semi-bold" value="2" />
+        </attr>
+        <attr name="tbl_header_subtitle_all_caps" format="boolean" />
+        <attr name="tbl_header_subtitle_show" format="boolean" />
+
+        <!--Left image-->
+        <attr name="tbl_header_left_image" format="reference|color" />
+        <attr name="tbl_header_left_image_tint" format="color" />
+        <attr name="tbl_header_left_image_size" format="reference|dimension" />
+        <attr name="tbl_header_left_image_background" format="reference|color" />
+
+        <!--Right image-->
+        <attr name="tbl_header_right_image" format="reference|color" />
+        <attr name="tbl_header_right_image_tint" format="color" />
+        <attr name="tbl_header_right_image_size" format="reference|dimension" />
+        <attr name="tbl_header_right_image_background" format="reference|color" />
+    </declare-styleable>
 </resources>

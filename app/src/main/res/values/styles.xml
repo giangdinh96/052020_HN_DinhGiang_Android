@@ -26,4 +26,14 @@
         <item name="fontPath">fonts/SFProText-SemiBold.ttf</item>
     </style>
 
+    <style name="TextActionToolbar" parent="TextSemiBold">
+        <item name="android:textColor">@color/colorDarkGrey</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TextTitleToolbar" parent="TextSemiBold">
+        <item name="android:textColor">@color/colorDarkGrey</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
 </resources>
