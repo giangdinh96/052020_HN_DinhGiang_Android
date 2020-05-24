@@ -26,14 +26,14 @@ class ProductItemAdapter(layout: Int = R.layout.item_product) :
         val discountPercentDlv = holder.getView<TextView>(R.id.discount_percent_dlv)
         holder.setText(R.id.name_tv, item.name)
 
-        if (item.price.isEmpty()) {
+        if (item.finalPrice.isEmpty()) {
             priceTv.visibility = View.GONE
         } else {
             priceTv.visibility = View.VISIBLE
-            priceTv.text = item.price.toLastLetterSuperscriptSpanString()
+            priceTv.text = item.finalPrice.toLastLetterSuperscriptSpanString()
         }
 
-        if (item.price.isEmpty()) {
+        if (item.finalPrice.isEmpty()) {
             originPriceTv.visibility = View.GONE
         } else {
             originPriceTv.visibility = View.VISIBLE

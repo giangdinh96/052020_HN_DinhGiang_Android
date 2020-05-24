@@ -26,9 +26,6 @@ class ProductDetailViewModel @Inject constructor() : BaseViewModel() {
         _bannerList.value = bannerListResult
 
         val productListResult = listOf<ProductItem>(
-            ProductItem("123", "123", "123", "123", "123", "123"),
-            ProductItem("123", "123", "123", "123", "123", "123"),
-            ProductItem("123", "123", "123", "123", "123", "123")
         )
         _productMoreList.value = productListResult
     }

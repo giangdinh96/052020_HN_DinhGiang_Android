@@ -1,18 +1,27 @@
 package vn.teko.test.data.mapper
 
-import vn.teko.test.data.remote.model.ProductItemResponse
+import vn.teko.test.data.remote.model.ProductResponse
+import vn.teko.test.presentation.model.ProductAttributeData
 import vn.teko.test.presentation.model.ProductItem
 import vn.teko.test.utils.DecimalFormatUtils
 import kotlin.random.Random
 
-fun ProductItemResponse.toPresentation(): ProductItem {
-    val imageFormatted = if (images?.isNotEmpty() != false) {
-        images?.get(0)?.url
-    } else {
-        ""
+fun ProductResponse.toPresentation(): ProductItem {
+    // bind image
+    val imagesResult = mutableListOf<String>()
+    if (!images.isNullOrEmpty()) {
+        for (item in images!!) {
+            item.url?.let {
+                imagesResult.add(it)
+            }
+        }
+    }
+    var imagePrimary = ""
+    if (imagesResult.isNotEmpty()) {
+        imagePrimary = imagesResult[0]
     }
 
-
+    // bind price
     val priceNumber = price?.sellPrice ?: 0.0
     val randomPercent = if (priceNumber > 0) Random.nextInt(40) else 0
     var priceFormatted = ""
@@ -26,12 +35,27 @@ fun ProductItemResponse.toPresentation(): ProductItem {
         } + "đ"
     }
 
+    // bind status
+
+    // bind product attribute list
+    val productAttributeDataList = ArrayList<ProductAttributeData>()
+    attributes?.let {
+        for (attribute in it) {
+            productAttributeDataList.add(ProductAttributeData(attribute.name, attribute.value))
+        }
+    }
+
+    val percentFormatted = if (randomPercent == 0) "" else "$randomPercent%"
     return ProductItem(
         id,
         name,
-        imageFormatted,
+        imagePrimary,
+        imagesResult,
+        priceNumber,
         priceFormatted,
         priceOriginFormatted,
-        if (randomPercent == 0) "" else "$randomPercent%"
+        percentFormatted,
+        status?.status ?: "",
+        productAttributeDataList
     )
 }
