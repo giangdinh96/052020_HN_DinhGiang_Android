@@ -26,11 +26,11 @@ class ProductDetailViewModel @Inject constructor(private val productRepository: 
     val result: LiveData<Resource<ProductItem>>
         get() = _result
 
-    private val _counter = MutableLiveData<Int>(1)
+    private val _counter = MutableLiveData<Int>()
     val counter: LiveData<Int>
         get() = _counter
 
-    private val _priceDisplayWithCounter = MutableLiveData<String>("")
+    private val _priceDisplayWithCounter = MutableLiveData<String>()
     val priceWithCounter: LiveData<String>
         get() = _priceDisplayWithCounter
 
