@@ -16,7 +16,7 @@ fun String.toStrikethroughSpanString(): Spannable {
 fun String.toLastLetterSuperscriptSpanString(): Spannable {
     val result = SpannableString(this)
     val span = SuperscriptSpan()
-    val spanTextSize = RelativeSizeSpan(0.5f)
+    val spanTextSize = RelativeSizeSpan(0.75f)
     result.setSpan(span, result.length - 1, result.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
     result.setSpan(
         spanTextSize,
