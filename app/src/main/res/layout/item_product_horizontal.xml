@@ -8,7 +8,8 @@
     android:background="@drawable/bg_product_item"
     android:clickable="true"
     android:focusable="true"
-    android:padding="12dp">
+    android:padding="12dp"
+    android:stateListAnimator="@animator/anim_press_common2">
 
     <ImageView
         android:id="@+id/image_iv"

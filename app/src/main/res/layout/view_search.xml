@@ -39,6 +39,7 @@
         android:layout_height="24dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/ic_close"
+        android:stateListAnimator="@animator/anim_press_common"
         android:tint="@color/colorTomato"
         app:layout_constraintBottom_toBottomOf="@id/content_et"
         app:layout_constraintRight_toRightOf="@id/content_et"

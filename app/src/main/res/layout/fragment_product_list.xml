@@ -23,6 +23,7 @@
         <ImageView
             android:id="@+id/back_iv"
             android:layout_width="0dp"
+            android:stateListAnimator="@animator/anim_press_common"
             android:layout_height="0dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_back"
