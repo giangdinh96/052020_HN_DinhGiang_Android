@@ -12,4 +12,10 @@ interface ProductRepository {
         page: Int,
         perPage: Int
     ): Single<List<ProductItem>>
+
+    fun getProductDetail(
+        id: String,
+        channel: String,
+        terminal: String
+    ): Single<ProductItem>
 }

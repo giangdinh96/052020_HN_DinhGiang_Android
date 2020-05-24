@@ -31,4 +31,21 @@ class ProductRemoteSourceImpl @Inject constructor(private val productService: Pr
             .toList()
     }
 
+    override fun getProductDetail(
+        id: String,
+        channel: String,
+        terminal: String
+    ): Single<ProductItem> {
+        return productService.getProductDetail(id, channel, terminal)
+            .flatMapObservable {
+                if (it.code == CODE_SUCCESS) {
+                    Observable.just(it.result?.product)
+                } else {
+                    Observable.error(Throwable(it.message))
+                }
+            }
+            .map { it.toPresentation() }
+            .firstOrError()
+    }
+
 }

@@ -25,4 +25,12 @@ class ProductRepositoryImpl @Inject constructor(private val productRemoteSource:
         )
     }
 
+    override fun getProductDetail(
+        id: String,
+        channel: String,
+        terminal: String
+    ): Single<ProductItem> {
+        return productRemoteSource.getProductDetail(id, channel, terminal)
+    }
+
 }
