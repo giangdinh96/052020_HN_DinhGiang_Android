@@ -42,6 +42,8 @@
             android:id="@+id/id_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorDeepSkyBlue"
+            android:textSize="12sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBaseline_toBaselineOf="@id/id_label_tv"
             app:layout_constraintHorizontal_bias="0"
@@ -75,12 +77,14 @@
             android:id="@+id/origin_price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:textColor="@color/colorCoolGrey"
             android:textSize="12sp"
             app:layout_constrainedWidth="true"
-            app:layout_constraintBaseline_toBaselineOf="@id/price_tv"
+            app:layout_constraintBottom_toBottomOf="@id/price_tv"
             app:layout_constraintLeft_toRightOf="@id/price_tv"
             app:layout_constraintRight_toLeftOf="@id/discount_percent_dlv"
+            app:layout_constraintTop_toTopOf="@id/price_tv"
             tools:text="8.790.000" />
 
         <vn.teko.test.widget.DiscountLabelView

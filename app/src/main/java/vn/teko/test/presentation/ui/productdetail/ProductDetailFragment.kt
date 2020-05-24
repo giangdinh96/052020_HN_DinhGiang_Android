@@ -9,11 +9,15 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import vn.teko.test.PRODUCT_ID
 import vn.teko.test.R
 import vn.teko.test.base.BaseFragment
+import vn.teko.test.common.Resource
 import vn.teko.test.databinding.FragmentProductDetailBinding
 import vn.teko.test.di.AppViewModelFactory
 import vn.teko.test.extension.setup
+import vn.teko.test.extension.toLastLetterSuperscriptSpanString
+import vn.teko.test.extension.toStrikethroughSpanString
 import vn.teko.test.presentation.adapter.BannerAdapter
 import vn.teko.test.presentation.adapter.ProductItemAdapter
+import vn.teko.test.presentation.model.ProductItem
 import vn.teko.test.widget.AutoViewPager
 import javax.inject.Inject
 
@@ -38,6 +42,7 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding>() {
         initToolbarListener()
         initBanner()
         initProductList()
+        initPickCartListener()
     }
 
     private fun initToolbarListener() {
@@ -65,20 +70,113 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding>() {
         binding.moreProduct.productListRcv.adapter = productItemAdapter
     }
 
+    private fun initPickCartListener() {
+        binding.pickCart.minusIv.setOnClickListener {
+            productDetailViewModel.minusCounter()
+        }
+
+        binding.pickCart.plusIv.setOnClickListener {
+            productDetailViewModel.addCounter()
+        }
+
+        binding.pickCart.addCartBtn.setOnClickListener {
+            productDetailViewModel.addCart()
+        }
+    }
+
     override fun observeData() {
-        productDetailViewModel.bannerList.observe(viewLifecycleOwner, Observer {
-            bannerAdapter.setNewInstance(ArrayList(it))
-            if (it.isEmpty()) {
-                binding.banner.root.visibility = View.GONE
+        productDetailViewModel.result.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Success -> {
+                    binding.loading.visibility = View.GONE
+                    binding.content.visibility = View.VISIBLE
+                    showProductDetail(it.data!!)
+                }
+                is Resource.Error -> {
+                    binding.loading.visibility = View.GONE
+                    binding.content.visibility = View.GONE
+                    binding.pickCart.root.visibility = View.GONE
+                    showToast(it.message!!)
+                }
+                is Resource.Loading -> {
+                    binding.loading.visibility = View.VISIBLE
+                }
             }
         })
 
-        productDetailViewModel.productMoreList.observe(viewLifecycleOwner, Observer {
-            productItemAdapter.setNewInstance(ArrayList(it))
-            if (it.isEmpty()) {
-                binding.moreProduct.root.visibility = View.GONE
-            }
+        productDetailViewModel.counter.observe(viewLifecycleOwner, Observer {
+            binding.pickCart.counterTv.text = it.toString()
         })
+
+        productDetailViewModel.priceWithCounter.observe(viewLifecycleOwner, Observer {
+            binding.pickCart.addCartBtn.text = it.toLastLetterSuperscriptSpanString()
+        })
+    }
+
+    private fun showProductDetail(item: ProductItem) {
+        // set toolbar
+        binding.toolbarTb.setTitle(item.name)
+
+        // set banner
+        val images = item.images
+        bannerAdapter.setNewInstance(ArrayList(images))
+        if (images.isEmpty()) {
+            binding.banner.root.visibility = View.GONE
+        }
+
+        // set header info
+        val priceTv = binding.headerInfo.priceTv
+        val originPriceTv = binding.headerInfo.originPriceTv
+        val discountPercentDlv = binding.headerInfo.discountPercentDlv
+        binding.headerInfo.nameTv.text = item.name
+        binding.headerInfo.idTv.text = item.id
+        binding.headerInfo.stateTv.text = item.status
+
+        // set price
+        if (item.finalPrice.isEmpty()) {
+            priceTv.visibility = View.GONE
+
+            binding.toolbarTb.setSubtitleShow(false)
+
+            binding.pickCart.root.visibility = View.GONE
+        } else {
+            val finalPrice = item.finalPrice.toLastLetterSuperscriptSpanString()
+            priceTv.visibility = View.VISIBLE
+            priceTv.text = finalPrice
+
+            binding.toolbarTb.setSubtitleShow(true)
+            binding.toolbarTb.setSubtitle(finalPrice)
+
+            binding.pickCart.root.visibility = View.VISIBLE
+        }
+
+        if (item.originPrice.isEmpty()) {
+            originPriceTv.visibility = View.GONE
+        } else {
+            originPriceTv.visibility = View.VISIBLE
+            originPriceTv.text = item.originPrice.toStrikethroughSpanString()
+        }
+        if (item.discountPercent.isEmpty()) {
+            discountPercentDlv.visibility = View.GONE
+        } else {
+            discountPercentDlv.visibility = View.VISIBLE
+            discountPercentDlv.text = item.discountPercent
+        }
+
+        // set product detail
+        binding.productDetail.setData(productData = item.attributes)
+
+        // set product more list
+        val products = ArrayList<ProductItem>()
+        // fake product list
+        products.add(item)
+        products.add(item.copy(id = "2"))
+        products.add(item.copy(id = "3"))
+        products.add(item.copy(id = "4"))
+        productItemAdapter.setNewInstance(products)
+        if (products.isEmpty()) {
+            binding.moreProduct.root.visibility = View.GONE
+        }
     }
 
     override fun onDestroyView() {
