@@ -5,4 +5,10 @@
     <string name="no_data">No data</string>
     <string name="product_id">Mã SP:</string>
     <string name="tam_het_hang">Tạm hết hàng</string>
+    <string name="no_info">Không có thông tin</string>
+    <string name="compare_price">So sánh giá</string>
+    <string name="product_tech_data">Thông số kỹ thuật</string>
+    <string name="product_description">Mô tả sản phẩm</string>
+    <string name="show_more">Hiển thị nhiều hơn</string>
+    <string name="show_less">Hiển thị ít hơn</string>
 </resources>
